@@ -1,34 +1,27 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="container">
-  <h1>PIPES</h1>
+  <h1>{{title | uppercase}}</h1>
   <hr>
   <table class="table table-hover table-dark">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th>Variable</th>
+        <th>Pipe</th>
+        <th>Producto</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th>{{nombre}}</th>
+        <th>uppercase</th>
+        <th>{{ nombre|uppercase}}</th>
       </tr>
       <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
+        <th>{{nombre}}</th>
+        <th>lowecase</th>
+        <th>{{ nombre|lowercase}}</th>
       </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+
     </tbody>
   </table>
 </div>
