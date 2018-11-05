@@ -11,4 +11,5 @@ export class AppComponent {
   array = [1, 2, 3, 4, 5];
   PI = Math.PI;
   a = 1.234667;
+  salario = 17000.5;
 }

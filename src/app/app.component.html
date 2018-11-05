@@ -56,6 +56,26 @@
         <th>percent</th>
         <th>{{a | percent:'2.2-2' }}</th>
       </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>currency</th>
+        <th>{{ salario | currency }}</th>
+      </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>currency:'ARS'</th>
+        <th>{{ salario | currency:'ARS' }}</th>
+      </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>currency:'ARS':true:'4.0-0'</th>
+        <th>{{ salario | currency:'ARS':true:'4.0-0' }}</th>
+      </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>number:'.2-2</th>
+        <th>$ {{ salario | number:'.2-2'}}</th>
+      </tr>
 
     </tbody>
   </table>
