@@ -10,4 +10,5 @@ export class AppComponent {
   nombre = 'Federico';
   array = [1, 2, 3, 4, 5];
   PI = Math.PI;
+  a = 1.234667;
 }
