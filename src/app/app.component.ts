@@ -13,11 +13,17 @@ export class AppComponent {
   a = 1.234667;
   salario = 17000.5;
   heroe = {
-    nombre: "Fede",
+    nombre: 'Fede',
     edad: 33,
-    direccion:{
+    direccion: {
       calle: 'pindonga',
       altura: 4444
     }
-  }
+  };
+
+  valorPromesa = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('llego la data');
+    }, 3000);
+  });
 }
