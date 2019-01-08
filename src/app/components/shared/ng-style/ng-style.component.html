@@ -1,0 +1,25 @@
+<p [style.fontSize.px]="tamano">hello friend</p>
+<p
+  [ngStyle]="{
+    'font-size': tamano + 5 + 'px',
+    color: 'red',
+    'font-weight': 'bold'
+  }"
+>
+  how are you?
+</p>
+
+<button
+  [style.margin.px]="15"
+  class="btn btn-info"
+  (click)="tamano = tamano + 5"
+>
+  <i class="fa fa-plus"></i>
+</button>
+<button
+  [style.margin.px]="15"
+  class="btn btn-info"
+  (click)="tamano = tamano - 5"
+>
+  <i class="fa fa-minus"></i>
+</button>

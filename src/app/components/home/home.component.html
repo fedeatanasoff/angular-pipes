@@ -1,0 +1,106 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+  <h1 class="text-center mt-4">{{ title | uppercase }}</h1>
+  <hr />
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Pipe</th>
+        <th>Producto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>{{ nombre }}</th>
+        <th>uppercase</th>
+        <th>{{ nombre | uppercase }}</th>
+      </tr>
+      <tr>
+        <th>{{ nombre }}</th>
+        <th>lowecase</th>
+        <th>{{ nombre | lowercase }}</th>
+      </tr>
+      <tr>
+        <th>{{ nombre }}</th>
+        <th>slice</th>
+        <th>{{ nombre | slice: 3 }}</th>
+      </tr>
+      <tr>
+        <th>{{ nombre }}</th>
+        <th>slice:0:3</th>
+        <th>{{ nombre | slice: 0:3 }}</th>
+      </tr>
+      <tr>
+        <th>{{ array }}</th>
+        <th>slice:1:3</th>
+        <th>{{ array | slice: 1:3 }}</th>
+      </tr>
+      <tr>
+        <th>{{ PI }}</th>
+        <th>number:'3.0-0'</th>
+        <th>{{ PI | number: "3.0-0" }}</th>
+      </tr>
+      <tr>
+        <th>{{ PI }}</th>
+        <th>number:'1'.0-3</th>
+        <th>{{ PI | number: "1.0-3" }}</th>
+      </tr>
+      <tr>
+        <th>{{ a }}</th>
+        <th>percent</th>
+        <th>{{ a | percent }}</th>
+      </tr>
+      <tr>
+        <th>{{ a }}</th>
+        <th>percent</th>
+        <th>{{ a | percent: "2.2-2" }}</th>
+      </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>currency</th>
+        <th>{{ salario | currency }}</th>
+      </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>currency:'ARS'</th>
+        <th>{{ salario | currency: "ARS" }}</th>
+      </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>currency:'ARS':true:'4.0-0'</th>
+        <th>{{ salario | currency: "ARS":true:"4.0-0" }}</th>
+      </tr>
+      <tr>
+        <th>{{ salario }}</th>
+        <th>number:'.2-2</th>
+        <th>$ {{ salario | number: ".2-2" }}</th>
+      </tr>
+      <tr>
+        <th>{{ valorPromesa }}</th>
+        <th>async</th>
+        <th>{{ valorPromesa | async }}</th>
+      </tr>
+      <tr>
+        <th>{{ fecha }}</th>
+        <th>date</th>
+        <th>{{ fecha | date }}</th>
+      </tr>
+      <tr>
+        <th>{{ fecha }}</th>
+        <th>date:'medium'</th>
+        <th>{{ fecha | date: "medium" }}</th>
+      </tr>
+      <tr>
+        <th>{{ fecha }}</th>
+        <th>date:'MMMM - dd'</th>
+        <th>{{ fecha | date: "MMMM - dd" }}</th>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="heroe">
+    <h4>JSON: {{ heroe | json }}</h4>
+    <pre> JSON con etiqueta pre: {{ heroe | json }} </pre>
+  </div>
+</div>
