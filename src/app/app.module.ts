@@ -12,6 +12,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { NgStyleComponent } from './components/shared/ng-style/ng-style.component';
 import { NgClassComponent } from './components/shared/ng-class/ng-class.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
+import { UsuarioNuevoComponent } from './components/usuario/usuario-nuevo.component';
+import { UsuarioEditarComponent } from './components/usuario/usuario-editar.component';
+import { UsuarioDetalleComponent } from './components/usuario/usuario-detalle.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -21,7 +25,11 @@ registerLocaleData(localeEs);
     MiscelaneosComponent,
     NavbarComponent,
     NgStyleComponent,
-    NgClassComponent
+    NgClassComponent,
+    UsuarioComponent,
+    UsuarioNuevoComponent,
+    UsuarioEditarComponent,
+    UsuarioDetalleComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(ROUTES, { useHash: true })],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],

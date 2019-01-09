@@ -10,9 +10,19 @@ export class NgClassComponent implements OnInit {
   propiedades: Object = {
     danger: true
   };
+
+  loading: boolean;
   constructor() {
     this.alert = 'alert-info';
+    this.loading = false;
   }
 
   ngOnInit() {}
+
+  ejecutar() {
+    this.loading = true;
+    setTimeout(() => {
+      this.loading = false;
+    }, 3000);
+  }
 }
