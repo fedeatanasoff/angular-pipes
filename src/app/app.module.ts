@@ -16,6 +16,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { UsuarioNuevoComponent } from './components/usuario/usuario-nuevo.component';
 import { UsuarioEditarComponent } from './components/usuario/usuario-editar.component';
 import { UsuarioDetalleComponent } from './components/usuario/usuario-detalle.component';
+import { FormComponent } from './components/form/form.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -29,7 +30,8 @@ registerLocaleData(localeEs);
     UsuarioComponent,
     UsuarioNuevoComponent,
     UsuarioEditarComponent,
-    UsuarioDetalleComponent
+    UsuarioDetalleComponent,
+    FormComponent
   ],
   imports: [BrowserModule, RouterModule.forRoot(ROUTES, { useHash: true })],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
