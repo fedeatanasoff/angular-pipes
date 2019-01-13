@@ -9,10 +9,17 @@
           type="text"
           class="form-control"
           placeholder="ingrese un nombre"
+          [(ngModel)]="usuario.nombre"
           name="nombre"
-          [ngModel]="usuario.nombre"
-          minlength="5"
+          minlength="3"
+          #nombre="ngModel"
+          required
         />
+        <div>Este campo es requerido</div>
+        <div *ngIf="nombre.errors?.minlength">
+          Debe contener al menos
+          {{ nombre.errors?.minlength.requiredLength }} caracteres
+        </div>
       </div>
       <div class="form-group">
         <label for="apellido">Apellido</label>
@@ -20,8 +27,10 @@
           type="text"
           class="form-control"
           placeholder="ingrese un apellido"
+          [(ngModel)]="usuario.apellido"
           name="apellido"
-          [ngModel]="usuario.apellido"
+          #apellido="ngModel"
+          required
         />
       </div>
 
@@ -32,8 +41,11 @@
           class="form-control"
           aria-describedby="emailHelp"
           placeholder="ingrese un email valido"
+          [(ngModel)]="usuario.email"
           name="email"
-          [ngModel]="usuario.email"
+          #email="ngModel"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          required
         />
         <small id="emailHelp" class="form-text text-muted">
           nunca compartiremos su correo electrónico con nadie.</small

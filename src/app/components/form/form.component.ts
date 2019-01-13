@@ -9,10 +9,10 @@ import { ClassField } from '@angular/compiler';
 export class FormComponent {
   formJson: any;
 
-  usuario: Object = {
-    nombre: 'Fede',
-    apellido: 'Daniel',
-    email: 'fede@mail.com'
+  usuario: User = {
+    nombre: null,
+    apellido: null,
+    email: null
   };
 
   constructor() {}
@@ -23,4 +23,10 @@ export class FormComponent {
     this.formJson = formulario.value;
     console.log(this.formJson);
   }
+}
+
+interface User {
+  nombre: string;
+  apellido: string;
+  email: string;
 }
