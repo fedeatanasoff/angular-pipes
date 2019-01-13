@@ -7,16 +7,24 @@
         <label for="nombre">Nombre</label>
         <input
           type="text"
-          class="form-control"
+          class="form-control "
           placeholder="ingrese un nombre"
           [(ngModel)]="usuario.nombre"
           name="nombre"
           minlength="3"
           #nombre="ngModel"
+          [ngClass]="{
+            'is-invalid':
+              (nombre.errors?.required || nombre.errors?.minlength) &&
+              nombre.touched,
+            'is-valid': nombre.valid
+          }"
           required
         />
-        <div>Este campo es requerido</div>
-        <div *ngIf="nombre.errors?.minlength">
+        <div *ngIf="nombre.errors?.required" class="invalid-feedback">
+          El nombre es requerido
+        </div>
+        <div *ngIf="nombre.errors?.minlength" class="invalid-feedback">
           Debe contener al menos
           {{ nombre.errors?.minlength.requiredLength }} caracteres
         </div>
@@ -29,9 +37,23 @@
           placeholder="ingrese un apellido"
           [(ngModel)]="usuario.apellido"
           name="apellido"
+          minlength="3"
           #apellido="ngModel"
+          [ngClass]="{
+            'is-invalid':
+              (apellido.errors?.required || apellido.errors?.minlength) &&
+              apellido.touched,
+            'is-valid': apellido.valid
+          }"
           required
         />
+        <small *ngIf="apellido.errors?.required" class="form-text text-danger">
+          El apellido es requerido
+        </small>
+        <small *ngIf="apellido.errors?.minlength" class="form-text text-danger">
+          Debe contener al menos
+          {{ apellido.errors?.minlength.requiredLength }} caracteres
+        </small>
       </div>
 
       <div class="form-group">
@@ -45,14 +67,32 @@
           name="email"
           #email="ngModel"
           pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+          [ngClass]="{
+            'is-invalid':
+              (email.errors?.required ||
+                email.errors?.pattern?.requiredPattern) &&
+              email.touched,
+            'is-valid': email.valid
+          }"
           required
         />
-        <small id="emailHelp" class="form-text text-muted">
+        <small id="emailHelp" class="form-text text-info">
           nunca compartiremos su correo electrónico con nadie.</small
         >
+        <small *ngIf="email.errors?.required" class="form-text text-danger">
+          El email es requerido
+        </small>
+        <small
+          *ngIf="email.errors?.pattern?.requiredPattern"
+          class="form-text text-danger"
+        >
+          Ingrese un email valido
+        </small>
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="formu.invalid">
+        Submit
+      </button>
     </form>
   </div>
 </div>
