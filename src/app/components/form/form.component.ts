@@ -12,8 +12,35 @@ export class FormComponent {
   usuario: User = {
     nombre: null,
     apellido: null,
-    email: null
+    email: null,
+    pais: null,
+    genero: null
   };
+
+  generos: string[] = ['Hombre', 'Mujer', 'No Especificar'];
+
+  paises = [
+    {
+      codigo: 'AR',
+      nombre: 'Argentina'
+    },
+    {
+      codigo: 'UR',
+      nombre: 'Uruguay'
+    },
+    {
+      codigo: 'BR',
+      nombre: 'Brazil'
+    },
+    {
+      codigo: 'VE',
+      nombre: 'Venezuela'
+    },
+    {
+      codigo: 'BOL',
+      nombre: 'Bolivia'
+    }
+  ];
 
   constructor() {}
 
@@ -29,4 +56,6 @@ interface User {
   nombre: string;
   apellido: string;
   email: string;
+  pais: string;
+  genero: null;
 }

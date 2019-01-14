@@ -47,10 +47,10 @@
           }"
           required
         />
-        <small *ngIf="apellido.errors?.required" class="form-text text-danger">
+        <small *ngIf="apellido.errors?.required" class="invalid-feedback">
           El apellido es requerido
         </small>
-        <small *ngIf="apellido.errors?.minlength" class="form-text text-danger">
+        <small *ngIf="apellido.errors?.minlength" class="invalid-feedback">
           Debe contener al menos
           {{ apellido.errors?.minlength.requiredLength }} caracteres
         </small>
@@ -79,20 +79,55 @@
         <small id="emailHelp" class="form-text text-info">
           nunca compartiremos su correo electrónico con nadie.</small
         >
-        <small *ngIf="email.errors?.required" class="form-text text-danger">
+        <small *ngIf="email.errors?.required" class="invalid-feedback">
           El email es requerido
         </small>
         <small
           *ngIf="email.errors?.pattern?.requiredPattern"
-          class="form-text text-danger"
+          class="invalid-feedback"
         >
           Ingrese un email valido
         </small>
       </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Pais</label>
+        <select
+          class="form-control"
+          name="pais"
+          #pais="ngModel"
+          [(ngModel)]="usuario.pais"
+          required
+          [ngClass]="{ 'is-valid': pais.valid }"
+        >
+          <option [ngValue]="null" disabled selected
+            >Seleccione una opcion</option
+          >
+          <option *ngFor="let pais of paises" [value]="pais.codigo">{{
+            pais.nombre
+          }}</option>
+        </select>
+      </div>
+
+      <!-- <div class="form-group">
+        <label for="genero">Genero</label>
+        <div class="custom-control custom-radio">
+          <label class="custom-control-label" *ngFor="let genero of generos"
+            ><input
+              type="radio"
+              name="genero"
+              class="custom-control-input"
+              [value]="genero"
+              [(ngModel)]="usuario.genero"
+            />
+            {{ genero }}</label
+          >
+        </div>
+      </div> -->
 
       <button type="submit" class="btn btn-primary" [disabled]="formu.invalid">
         Submit
       </button>
+      <!-- [disabled]="formu.invalid" -->
     </form>
   </div>
 </div>
