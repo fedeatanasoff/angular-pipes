@@ -1,22 +1,97 @@
 <div class="mt-5">
   <form [formGroup]="formu" (ngSubmit)="guardarCambios()">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nombre</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="nombre"
-        formControlName="nombre"
-      />
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Apellido</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="apellido"
-        formControlName="apellido"
-      />
+    <div formGroupName="nombrecompleto">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nombre</label>
+
+        <input
+          type="text"
+          class="form-control"
+          placeholder="nombre"
+          formControlName="nombre"
+          [ngClass]="{
+            'is-invalid':
+              formu.controls['nombrecompleto'].controls['nombre'].errors
+                ?.required ||
+              formu.controls['nombrecompleto'].controls['nombre'].errors
+                ?.minlength,
+            'is-valid':
+              !formu.controls['nombrecompleto'].controls['nombre'].errors
+                ?.required &&
+              !formu.controls['nombrecompleto'].controls['nombre'].errors
+                ?.minlength
+          }"
+        />
+        <!-- <div
+              *ngIf="formu.controls['nombre'].errors?.required"
+              class="text-danger"
+            >
+              <small>El nombre es necesario</small>
+            </div>
+            <div
+              *ngIf="formu.controls['nombre'].errors?.minlength"
+              class="text-danger"
+            >
+              <small>Debe tener al menos 3 caracteres</small>
+            </div> -->
+
+        <div
+          *ngIf="
+            formu.controls['nombrecompleto'].controls['nombre'].errors?.required
+          "
+          class="invalid-feedback"
+        >
+          Campo requerido.
+        </div>
+        <div
+          *ngIf="
+            formu.controls['nombrecompleto'].controls['nombre'].errors
+              ?.minlength
+          "
+          class="invalid-feedback"
+        >
+          Debe incluir al menos 3 caracteres.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="apellido"
+          formControlName="apellido"
+          [ngClass]="{
+            'is-invalid':
+              formu.controls['nombrecompleto'].controls['apellido'].errors
+                ?.required ||
+              formu.controls['nombrecompleto'].controls['apellido'].errors
+                ?.minlength,
+            'is-valid':
+              !formu.controls['nombrecompleto'].controls['apellido'].errors
+                ?.required &&
+              !formu.controls['nombrecompleto'].controls['apellido'].errors
+                ?.minlength
+          }"
+        />
+        <div
+          *ngIf="
+            formu.controls['nombrecompleto'].controls['apellido'].errors
+              ?.required
+          "
+          class="invalid-feedback"
+        >
+          Campo requerido.
+        </div>
+        <div
+          *ngIf="
+            formu.controls['nombrecompleto'].controls['apellido'].errors
+              ?.minlength
+          "
+          class="invalid-feedback"
+        >
+          Debe incluir al menos 3 caracteres.
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">email</label>

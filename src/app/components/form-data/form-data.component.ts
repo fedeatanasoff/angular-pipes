@@ -8,18 +8,59 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class FormDataComponent implements OnInit {
   formu: FormGroup;
+
+  user_null: User = {
+    nombrecompleto: {
+      nombre: null,
+      apellido: null
+    },
+    email: null
+  };
+
+  user: User = {
+    nombrecompleto: {
+      nombre: 'fede',
+      apellido: 'garvez'
+    },
+    email: 'fede@fede.com'
+  };
+
   constructor() {
     this.formu = new FormGroup({
-      nombre: new FormControl('', Validators.required),
-      apellido: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required)
+      nombrecompleto: new FormGroup({
+        nombre: new FormControl('', [
+          Validators.required,
+          Validators.minLength(3)
+        ]),
+        apellido: new FormControl('', [
+          Validators.required,
+          Validators.minLength(3)
+        ])
+      }),
+
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$')
+      ])
     });
+
+    this.formu.setValue(this.user_null);
   }
 
   guardarCambios(): void {
     console.log(this.formu.value);
     console.log('Formu =>', this.formu);
+
+    this.formu.reset(this.user_null);
   }
 
   ngOnInit() {}
+}
+
+interface User {
+  nombrecompleto: {
+    nombre: string;
+    apellido: string;
+  };
+  email: string;
 }
