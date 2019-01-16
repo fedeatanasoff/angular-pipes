@@ -17,8 +17,9 @@ import { UsuarioNuevoComponent } from './components/usuario/usuario-nuevo.compon
 import { UsuarioEditarComponent } from './components/usuario/usuario-editar.component';
 import { UsuarioDetalleComponent } from './components/usuario/usuario-detalle.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './components/form/form.component';
+import { FormDataComponent } from './components/form-data/form-data.component';
 registerLocaleData(localeEs);
 
 @NgModule({
@@ -33,11 +34,13 @@ registerLocaleData(localeEs);
     UsuarioNuevoComponent,
     UsuarioEditarComponent,
     UsuarioDetalleComponent,
-    FormComponent
+    FormComponent,
+    FormDataComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES, { useHash: true })
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' }],
