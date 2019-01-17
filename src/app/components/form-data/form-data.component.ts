@@ -19,10 +19,10 @@ export class FormDataComponent implements OnInit {
 
   user: User = {
     nombrecompleto: {
-      nombre: 'fede',
-      apellido: 'garvez'
+      nombre: '',
+      apellido: ''
     },
-    email: 'fede@fede.com'
+    email: ''
   };
 
   constructor() {
