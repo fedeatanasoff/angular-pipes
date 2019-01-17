@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-form-data',
@@ -9,20 +9,22 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class FormDataComponent implements OnInit {
   formu: FormGroup;
 
-  user_null: User = {
+  user_null: any = {
     nombrecompleto: {
       nombre: null,
       apellido: null
     },
-    email: null
+    email: null,
+    pasatiempos: [null]
   };
 
-  user: User = {
+  user: Object = {
     nombrecompleto: {
       nombre: '',
       apellido: ''
     },
     email: ''
+    // pasatiempos: ['comer', 'dormir']
   };
 
   constructor() {
@@ -41,10 +43,17 @@ export class FormDataComponent implements OnInit {
       email: new FormControl('', [
         Validators.required,
         Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$')
-      ])
+      ]),
+      pasatiempos: new FormArray([new FormControl('', Validators.required)])
     });
 
     this.formu.setValue(this.user_null);
+  }
+
+  agregarPasatiempo(): void {
+    (<FormArray>this.formu.controls['pasatiempos']).push(
+      new FormControl('', Validators.required)
+    );
   }
 
   guardarCambios(): void {
@@ -63,4 +72,5 @@ interface User {
     apellido: string;
   };
   email: string;
+  pasatiempos: string[];
 }
