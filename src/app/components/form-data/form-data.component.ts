@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form-data',
@@ -44,10 +45,43 @@ export class FormDataComponent implements OnInit {
         Validators.required,
         Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$')
       ]),
-      pasatiempos: new FormArray([new FormControl('', Validators.required)])
+      usuario: new FormControl('', Validators.required, this.existeUsuario),
+      pasatiempos: new FormArray([new FormControl('', Validators.required)]),
+      password1: new FormControl('', Validators.required),
+      password2: new FormControl()
     });
 
-    this.formu.setValue(this.user_null);
+    //this.formu.setValue(this.user_null);
+    this.formu.controls['password2'].setValidators([
+      Validators.required,
+      this.passEquals.bind(this.formu)
+    ]);
+  }
+
+  passEquals(control: FormControl): { [s: string]: boolean } {
+    const formulario = this;
+
+    if (control.value === formulario.controls['password1'].value) {
+      return null;
+    }
+
+    return {
+      noiguales: true
+    };
+  }
+
+  existeUsuario(control: FormControl): Promise<any> | Observable<any> {
+    const promesa = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (control.value === 'ceres') {
+          resolve({ existe: true });
+        } else {
+          resolve(null);
+        }
+      }, 3000);
+    });
+
+    return promesa;
   }
 
   agregarPasatiempo(): void {
@@ -60,7 +94,7 @@ export class FormDataComponent implements OnInit {
     console.log(this.formu.value);
     console.log('Formu =>', this.formu);
 
-    this.formu.reset(this.user_null);
+    // this.formu.reset(this.user_null);
   }
 
   ngOnInit() {}
